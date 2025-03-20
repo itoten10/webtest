@@ -10,6 +10,7 @@ if not api_key:
     st.error("❌ APIキーが取得できていません。Secretsの設定を確認してください。")
 else:
     st.success("✅ APIキーが正常に取得されました。")
+print(api_key)
 
 os.environ["API_KEY"] = api_key
 client = OpenAI()
