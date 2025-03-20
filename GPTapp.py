@@ -12,8 +12,8 @@ load_dotenv()
 # .envファイルから環境変数を読み込む
 load_dotenv()
 
-# 環境変数からAPIキーを取得
-api_key = os.getenv("OPENAI_API_KEY")
+# 環境変数からAPIキーを取得 
+api_key = st.secrets[GPTAPI][OPENAI_API_KEY]
 
 content_kind_of =[
     "中立的で客観的な文章",
