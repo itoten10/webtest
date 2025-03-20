@@ -5,12 +5,6 @@ import openai  # OpenAIのAPIを扱うためのライブラリをインポート
 # StreamlitのSecretsからAPIキーを取得
 openai.api_key = st.secrets["GPTAPI"].get("OPENAI_API_KEY")
 
-# APIキーが取得できているか確認
-if not api_key:
-    st.error("❌ APIキーが取得できていません。Secretsの設定を確認してください。")
-else:
-    st.success("✅ APIキーが正常に取得されました。")
-
 
 content_kind_of =[
     "中立的で客観的な文章",
