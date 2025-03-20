@@ -11,7 +11,7 @@ if not api_key:
 else:
     st.success("✅ APIキーが正常に取得されました。")
 
-os.environ["OPENAI_API_KEY"] = api_key
+os.environ["API_KEY"] = api_key
 client = OpenAI()
 
 content_kind_of =[
