@@ -4,7 +4,7 @@ import openai  # OpenAIのAPIを扱うためのライブラリをインポート
 
 # StreamlitのSecretsからAPIキーを取得
 openai.api_key = st.secrets["GPTAPI"].get("OPENAI_API_KEY")
-
+client = openai.Client()  # 新しいAPIの使い方に対応
 
 content_kind_of =[
     "中立的で客観的な文章",
@@ -34,7 +34,7 @@ def run_gpt(content_text_to_gpt,content_kind_of_to_gpt,content_maxStr_to_gpt):
     request_to_gpt = content_text_to_gpt + " また、これを記事として読めるように、記事のタイトル、目次、内容の順番で出力してください。内容は"+ content_maxStr_to_gpt + "文字以内で出力してください。" + "また、文章は" + content_kind_of_to_gpt + "にしてください。"
     
     # 決めた内容を元にclient.chat.completions.createでchatGPTにリクエスト。オプションとしてmodelにAIモデル、messagesに内容を指定
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
             {"role": "user", "content": request_to_gpt },
