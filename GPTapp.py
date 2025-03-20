@@ -1,19 +1,16 @@
 import streamlit as st # フロントエンドを扱うstreamlitの機能をインポート
-from openai import OpenAI  # OpenAIのAPIを扱うためのライブラリをインポート
-import os
+import openai  # OpenAIのAPIを扱うためのライブラリをインポート
+
 
 # StreamlitのSecretsからAPIキーを取得
-api_key = st.secrets["GPTAPI"].get("OPENAI_API_KEY")
+openai.api_key = st.secrets["GPTAPI"].get("OPENAI_API_KEY")
 
 # APIキーが取得できているか確認
 if not api_key:
     st.error("❌ APIキーが取得できていません。Secretsの設定を確認してください。")
 else:
     st.success("✅ APIキーが正常に取得されました。")
-print(api_key)
 
-os.environ["API_KEY"] = api_key
-client = OpenAI()
 
 content_kind_of =[
     "中立的で客観的な文章",
